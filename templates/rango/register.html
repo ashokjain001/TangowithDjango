@@ -1,0 +1,48 @@
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
+
+{% block title %} Register {% endblock %}
+
+{% block body_block %}
+<br />
+ <div class="col-lg-10 col-md-11 col-sm-2 col-xs-12">
+ <div class = "panel panel-default">
+     <div class = "panel-heading">
+    <h1>Welcome! Register with Rango</h1>
+         </div>
+    <div class="panel-body">
+
+    {% if registered %}
+        {{ request.user.username }}
+        <strong>thank you for registering!</strong>
+        <a href="/rango/">Return to the homepage.</a><br />
+    {% else %}
+        <!--<h2 class="form-signin-heading">Sign up Here</h2>-->
+        <br />
+        <form class="form-signin span8" id = 'User_form' method = 'post'
+              action = "{% url 'register' %}"  enctype="multipart/form-data">
+
+            {% for field in user_form.visible_fields %}
+                {{ field.errors }}
+                <!--{{ field.help_text }}<br />-->
+                <label class="control-label col-sm-4">{{ field.help_text }}</label>
+                {{ field }}<br /><br />
+            {% endfor %}
+
+            {% for field in userprofile_form.visible_fields %}
+                {{ field.errors }}
+                <label class="control-label col-sm-4">{{ field.help_text }}</label>
+                {{ field }}<br /> <br />
+            {% endfor %}
+
+            <!--{{user_form.as_p}}-->
+            <!--{{userprofile_form.as_p}}-->
+
+            <input class = "btn btn-primary" type="submit" name="submit" value="Register" />
+        </form>
+    {% endif %}
+         </div>
+     </div>
+     </div>
+     </div>
+{% endblock %}

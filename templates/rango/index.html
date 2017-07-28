@@ -1,0 +1,104 @@
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
+{% block title %} <title>Rango Home Page</title> {% endblock %}
+
+{% block body_block %}
+        {% if request.user.is_authenticated %}
+
+            <br />
+            <div class="col-lg-10 col-md-11 col-sm-2 col-xs-12">
+            <div class = "panel panel-default">
+                <div class = "panel-heading">
+                <h1><strong>Ready to Rango {{ request.user.username }}!</strong></h1>
+                Find, add, share and rango useful links and resources.
+                </div>
+
+            </div>
+
+            <div class = "panel panel-default">
+                <div class = "panel-heading">
+                    <h4>Category</h4><br/>
+                    {% if categories %}
+                        <ul class="list-group">
+                            {% for category in categories %}
+                                {% url 'category' category.url as the_url %}
+                                <li class="list-group-item"><a href="{{ the_url }}"> {{category.name}}</a></li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <strong> No categories present</strong>
+                    {% endif %}
+                </div>
+                </div>
+            <div class="panel panel-default">
+                <div class = "panel-heading">
+                <h4>Pages</h4><br/>
+
+                {% if pages %}
+                    <ul class = "list-group">
+                        {% for page in pages %}
+                            <li class = "list-group-item"> <a href = "{{ page.url }}">{{page.title}} - {{page.category}}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <strong> No Pages Present </strong>
+                {% endif %}
+                </div>
+        </div>
+            <br />
+        {% else %}
+            <br/>
+            <div class = "panel panel-default">
+                <div class = "panel-heading">
+
+                <h1>Please <a href = "{% url 'user_login' %}">Login</a> or <a href = "{% url 'register' %}">Register</a> to access Rango!</h1>
+                </div>
+            </div>
+        {% endif %}
+                {% endblock%}
+
+<!--
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rango Home Page</title>
+</head>
+<body>
+        {% if request.user.is_authenticated %}
+            <h1><strong>Rango welcomes you {{ request.user.username }}!</strong></h1>
+            {% if categories %}
+                <ul>
+                    {% for category in categories %}
+
+                    {% url 'category' category.url as the_url %}
+                    <li><a href="{{ the_url }}"> {{category.name}}</a></li>
+
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <strong> No categories present</strong>
+            {% endif %}
+
+            <a href="{% url 'add_category' %}">Add a new Category</a><br />
+            <a href = "{% url 'about' %}"> About</a><br />
+            <a href = "{% url 'blog' %}" >Blog</a> <br />
+            <a href = "{% url 'user_logout' %}" > logout</a> <br />
+
+        {% else %}
+            <h1><strong>Rango welcomes you!</strong></h1>
+            <a href = "{% url 'register' %}">Register</a><br />
+            <a href = "{% url 'user_login' %}">Login</a><br />
+
+        {% endif %}
+
+            <br />
+
+            <img src="{% static "enchanted.jpg" %}" alt="Picture of Rango" height="500" width="800">
+    </body>
+</html>
+</html>
+-->

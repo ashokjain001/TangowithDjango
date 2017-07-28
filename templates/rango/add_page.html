@@ -1,0 +1,64 @@
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
+
+{% block title %} Add a new Page {% endblock %}
+
+{% block body_block %}
+    <br />
+    <div class="col-lg-8 col-md-11 col-sm-2 col-xs-12">
+    <div class = "panel panel-default">
+        <div class = "panel-heading">
+
+    <h1>Rango! Add a new page</h1> <br />
+    <form id = "page_form" method = 'POST' action = '/rango/category/{{ category_name_url }}/add_page/'>
+         <!--{% csrf_token %} --->
+        {% for hidden in form.hidden_fields %}
+            {{ hidden }}
+        {% endfor %}
+
+        {% for field in form.visible_fields %}
+            {{  field.errors  }}
+            {% if field.name == 'category' %}
+                Please select a category
+            {% else %}
+                {{field.help_text}}
+            {% endif %}
+
+            <!--{{ field.name }} -->
+            {{ field }}<br /><br />
+        {% endfor %}
+        <input type = 'submit' name = 'submit' value = 'Add Page'/>
+    </form>
+
+    </div>
+    </div>
+{% endblock %}
+
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rango! Add a new Page</title>
+</head>
+<body>
+      <h1>Rango! Add a new page</h1>
+    <form id = "page_form" method = 'POST' action = '/rango/category/{{ category_name_url }}/add_page/'>
+         <!--{% csrf_token %}
+        {% for hidden in form.hidden_fields %}
+            {{ hidden }}
+        {% endfor %}
+
+        {% for field in form.visible_fields %}
+            {{  field.errors  }}
+            {{  field.help_text}}
+            {{field.name}}
+            {{ field }}
+        {% endfor %}
+
+    <input type = 'submit' name = 'submit' value = 'Add Page'/>
+    </form>
+
+</body>
+</html>
+-->

@@ -1,0 +1,27 @@
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
+
+{% block title %} About {% endblock %}
+
+{% block body_block %}
+
+    <br />
+    <div class = "container-fluid">
+        <div class = "page-header">
+    <!--<button id="about-btn"> Click Me - I'm Javascript on Speed</button>-->
+        <h1>About Ashok!</h1>
+        </div>
+        <div class = "<div class ="jumbotron">
+            <strong>{{ boldmessage }}</strong>
+            <br />
+            <br />
+            <a href = "{% url 'index' %}"> Back to main page</a><br />
+            <br />
+            <div class = "panel-footer">
+                 <img src="{% static "enchanted.jpg" %}" alt="Ashok Rock climbing" height="500" width="800">
+                </div>
+            </div>
+
+{% endblock %}
+
+

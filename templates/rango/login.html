@@ -1,0 +1,38 @@
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
+
+{% block title %} Login {% endblock %}
+
+{% block body_block %}
+
+        <br />
+        <div class="col-lg-8 col-md-11 col-sm-2 col-xs-12">
+        <div class = "panel panel-default">
+        <div class = "panel-heading">
+
+        <h1 class="text-left login-title">Login to Rango!</h1>
+        </div>
+        <div class = "panel-body">
+            <br />
+        <form class="form-group" id = 'user_login' method = 'POST' action = '/rango/login/'>
+
+             <label class="control-label col-sm-2" for="username">Username:</label>
+                 <input class="input-block-level" placeholder="Username" id="id_username" maxlength="254"  name = 'username' value = "" size = '30' type="text" /><br /><br />
+
+
+             <label class="control-label col-sm-2" for="password">Password:</label>
+                 <input class="input-block-level" placeholder="Password" id="id_password" name = 'password' value = "" size = '30' type = 'password'><br /><br />
+
+
+            <div class="col-sm-offset-2">
+            <button class="btn btn-primary"  type = 'submit'>sign in</button>
+            </div>
+
+
+        </form>
+
+        </div>
+        </div>
+        </div>
+{% endblock %}
+
