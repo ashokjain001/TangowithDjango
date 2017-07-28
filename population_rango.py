@@ -5,6 +5,7 @@ import django
 from rango.models import Category, Page
 from django.conf import settings
 
+
 def populate():
 
     python_cat = add_cat('Python',128,64)
@@ -63,5 +64,5 @@ if __name__ == '__main__':
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'rango.settings')
     django.setup()
     os.environ['DJANGO_SETTINGS_MODULE'] = 'rango.settings'
-    #settings.configure()
+    settings.configure()
     populate()
