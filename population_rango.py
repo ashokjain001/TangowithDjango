@@ -1,6 +1,6 @@
 import os
 import django
-django.setup()
+
 
 from rango.models import Category, Page
 from django.conf import settings
@@ -61,6 +61,7 @@ def add_cat(name,views,likes):
 if __name__ == '__main__':
     print "Starting Rango population script..."
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'rango.settings')
+    django.setup()
     os.environ['DJANGO_SETTINGS_MODULE'] = 'rango.settings'
     #settings.configure()
     populate()
